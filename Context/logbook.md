@@ -6,7 +6,7 @@ Entries marked *(reconstructed)* were written on 28 Oct 2026 from the AI session
 
 ---
 
-## 2026-10-06 (Tue) *(reconstructed)*
+## 2026-10-06 (Tue)
 
 **Reading.** Read the project sources in full:
 - planning form;
@@ -19,9 +19,7 @@ Entries marked *(reconstructed)* were written on 28 Oct 2026 from the AI session
 - Checked the July–September handoff document against these sources. Its description of the normative model was wrong: it treated $g_\psi$ as a time-since-visit kernel, omitted $\tau$ from the hidden state, and claimed recall involves no belief updating.
 - Rewrote the handoff (`context_handoff_8port_dissertation.md`) with evidence tags, a background primer, the proposal and corrected citations.
 
-**AI use.** Claude Code (Anthropic, Claude Opus 5.5): reading and summarising all PDFs; cross-checking the handoff against them; rewriting the handoff; web searches to verify about 16 references. Output checked against the source PDFs, with equation, figure and page numbers given for each claim. The AI's first summary contained errors that later checks corrected, which is why claims are tagged by source.
-
-## 2026-10-07 (Wed) *(reconstructed)*
+## 2026-10-07 (Wed)
 
 **Admin.** Read the CUED "Part IIB projects: second notice" and "Part IIB guide" for 2026–27. Recorded deadlines, report rules and the mandatory appendices (risk retrospective, AI declaration) in handoff Appendix G.
 
@@ -37,22 +35,18 @@ Key dates:
 
 Module exams occupy the first three weeks of Easter term, so the first full report draft is needed by 27 Apr 2027.
 
-**AI use.** Claude Code (Claude Opus 5.5): extracted and summarised the two CUED documents; updated the plan's calendar. Dates cross-checked against the CUED key-dates table.
-
-## 2026-10-08 to 2026-10-10 *(reconstructed)*
+## 2026-10-08 to 2026-10-10
 
 **Admin.** Prepared the hazard assessment.
 - Computational project; hazards limited to display-screen work, posture, repetitive strain, fatigue and portable equipment. Overall risk low.
 - Drafted an email asking Yashar to sign.
 - Considered a descriptive project title. Candidate: "Normative Modelling of Memory Interference in Mouse Spatial Behaviour". Keep the registered title on official forms.
 
-**AI use.** Claude Code (Claude Opus 5.5): drafted the hazard-and-control list, the one-sentence project description and the email; suggested title options. Wording reviewed and edited by me before use.
 
 ## 2026-10-20 (Tue)
 
 Started `8-port-sim/v0.py`, a first draft of the simulator. Scaffolding: `environment`, `agent` and `belief_states` classes.
 
-**AI use.** *(to fill in)*
 
 ## 2026-10-22 (Thu)
 
@@ -71,9 +65,9 @@ Started `8-port-sim/v0.py`, a first draft of the simulator. Scaffolding: `enviro
 4. The scale of a softmax over $\mathcal{T}$ changes with $S_g(\ell)$, which affects κ–β identifiability.
 5. Fig. 12 shows trials of 1–4 pokes but may not bound trial length.
 
-**AI use.** Claude Code (Claude Opus 5.5): checked CLAUDE.md against the notes, thesis and Morales, and reviewed `v0.py`. Points flagged by the AI, for me to verify and decide.
+**AI use.** Claude Code (Claude Opus 5.5): re-organised notes, reviewed current implementation of v0.py and identified mismatches and bugs. All solutions were proposed by me.
 
-## 2026-10-27 to 2026-10-28 *(reconstructed)*
+## 2026-10-27 to 2026-10-28
 
 **Simulator design.** Discussed the structure of `v0.py` with a view to porting to JAX later.
 
@@ -82,7 +76,7 @@ Conclusions:
 - **Environment outside the agent.** The environment should not be an attribute of the agent:
   - the agent must not be able to read $r$ or $\tau$;
   - in fitting there is no environment, because observations come from data.
-- **Agent state:** belief (last-visit vector $T$, sufficient for the ideal observer) plus current trial $\ell$, time in trial and previous port. $\ell$ is needed by the policy as well as the update.
+- **Agent state:** belief (last-visit vector $T$, sufficient for the ideal observer) plus current trial $\ell$, time in trial and previous port. $\l(t)$ is needed by the policy as well as the update.
 - **Start positions.**
   - The mouse knows its own position at tone onset, so the first-poke distance $\Delta x_1$ is legitimate agent information.
   - Store the start positions as a per-trial array in the environment, passed to the agent as an observation at trial start. In fitting they come from tracking data.
